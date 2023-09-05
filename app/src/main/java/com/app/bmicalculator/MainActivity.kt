@@ -52,6 +52,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private  fun displayResult(bmi: Float){
+
+        val rule = mapOf(
+            "Underweight" to R.color.under_weight,
+            "Healthy" to R.color.normal,
+            "Overweight" to R.color.over_weitght,
+            "Obese" to R.color.obese
+        )
+
         tvIndex.text = bmi.toString()
         tvInfo.text = "(Normal range is 18.5 - 24.9)"
 
@@ -61,19 +69,19 @@ class MainActivity : AppCompatActivity() {
         when{
             bmi < 18.50 -> {
                 text = "Underweight"
-                color = R.color.under_weight
+                color = rule[text]!!
             }
             bmi in 18.50..24.99 -> {
                 text = "Healthy"
-                color = R.color.normal
+                color = rule[text]!!
             }
             bmi in 25.00..29.99 -> {
                 text = "Overweight"
-                color = R.color.over_weitght
+                color = rule[text]!!
             }
             bmi > 29.99 -> {
                 text = "Obese"
-                color = R.color.obese
+                color = rule[text]!!
             }
         }
 
